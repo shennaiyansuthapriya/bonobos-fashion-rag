@@ -11,6 +11,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
+from app.api.v1 import evaluation as evaluation_router
 from app.api.v1 import products as products_router
 from app.api.v1 import style as style_router
 from app.config import get_settings
@@ -44,6 +45,7 @@ app.add_middleware(
 
 app.include_router(style_router.router, prefix="/api/v1")
 app.include_router(products_router.router, prefix="/api/v1")
+app.include_router(evaluation_router.router, prefix="/api/v1")
 
 
 @app.get("/health")
